@@ -52,6 +52,10 @@ public abstract class Instruction {
 
 	// TODO: What does abstract in the declaration below mean?
 	//       (Write a short explanation.)
+	// The abstract keyword is used to denote that this method has to be implemented by
+	// the subclasses of the Instruction class.
+	// Hence, all the classes which inherit Instruction class ( or all the Instruction subclasses )
+	// has to implement the "execute", "toString", "equals" and "hashCode" methods.
 	@Override
 	public abstract String toString();
 
