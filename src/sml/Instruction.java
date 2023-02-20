@@ -4,8 +4,10 @@ package sml;
 
 /**
  * Represents an abstract instruction.
- *
- * @author ...
+ * This is a base class for all the instructions.
+ * It includes all the fields and methods which the "Instruction" subclasses should inherit.
+ * Instruction class handles the labels and the opcodes for instruction in the program.
+ * @author gakid
  */
 public abstract class Instruction {
 	protected final String label;
@@ -54,6 +56,11 @@ public abstract class Instruction {
 	public abstract String toString();
 
 	// TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
+	@Override
+	public abstract boolean equals(Object o) ;
+
+	@Override
+	public abstract int hashCode() ;
 
 
 }
