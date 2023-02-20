@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 // TODO: write a JavaDoc for the class
 
 /**
- *
+ * 1.0v
+ * Represents the "dictionary" of the labels where each label points to an address to the memory.
  * @author gakid
  */
 public final class Labels {
