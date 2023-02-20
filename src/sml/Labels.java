@@ -38,6 +38,12 @@ public final class Labels {
 		// TODO: Where can NullPointerException be thrown here?
 		//       (Write an explanation.)
 		//       Add code to deal with non-existent labels.
+		// The NullPointerException should be put before we try to access the value of the requested label.
+		// If a reference variable is set to null or either explicitly by us or Java automatically, and
+		// we attempt to deference it, we should get a NullPointerException.
+		if (labels.get(label) == null){
+			throw new NullPointerException("The label does not contain any value.");
+		}
 
 		return labels.get(label);
 	}
