@@ -9,7 +9,14 @@ import java.util.Objects;
 // TODO: write a JavaDoc for the class
 
 /**
- * @author
+ * 1.1v
+ * The class represents the "add" type instruction.
+ * The class inherits from the Instruction class and applies among others,
+ * the abstract methods from its parent class.
+ *
+ * An instance of this class contains the label, and two registers (result and source),
+ * where the add operation will be passed to the result register.
+ * @author gakid
  */
 
 public class AddInstruction extends Instruction {
