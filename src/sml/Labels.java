@@ -3,12 +3,15 @@ package sml;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 // TODO: write a JavaDoc for the class
 
 /**
- *
- * @author ...
+ * 1.1v
+ * Represents a final class - a class which cannot be changed.
+ * Specifically, it represents the "dictionary" of the labels where each label points to an address to the memory.
+ * @author gakid
  */
 public final class Labels {
 	private final Map<String, Integer> labels = new HashMap<>();
@@ -22,6 +25,9 @@ public final class Labels {
 	public void addLabel(String label, int address) {
 		Objects.requireNonNull(label);
 		// TODO: Add a check that there are no label duplicates.
+		if (labels.containsKey(label)){
+			throw new IllegalArgumentException("The label is already used.");
+		}
 		labels.put(label, address);
 	}
 
@@ -35,6 +41,13 @@ public final class Labels {
 		// TODO: Where can NullPointerException be thrown here?
 		//       (Write an explanation.)
 		//       Add code to deal with non-existent labels.
+		// The NullPointerException should be put before we try to access the value of the requested label.
+		// If a reference variable is set to null or either explicitly by us or Java automatically, and
+		// we attempt to deference it, we should get a NullPointerException.
+		if (labels.get(label) == null){
+			throw new NullPointerException("The label does not contain any value.");
+		}
+
 		return labels.get(label);
 	}
 
@@ -47,10 +60,24 @@ public final class Labels {
 	@Override
 	public String toString() {
 		// TODO: Implement the method using the Stream API (see also class Registers).
-		return "";
+		return labels.entrySet().stream()
+				.map(e -> e.getKey() + " -> " + e.getValue())
+				.collect(Collectors.joining(", ", "[","]"));
 	}
 
 	// TODO: Implement equals and hashCode (needed in class Machine).
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Labels labels1 = (Labels) o;
+		return Objects.equals(labels, labels1.labels);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(labels);
+	}
 
 	/**
 	 * Removes the labels
