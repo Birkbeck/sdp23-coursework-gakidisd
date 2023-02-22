@@ -44,6 +44,7 @@ public abstract class Instruction {
 	 *          the instruction with the next address is to be executed
 	 */
 
+
 	public abstract int execute(Machine machine);
 
 	protected String getLabelString() {
